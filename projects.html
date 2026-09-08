@@ -6,6 +6,10 @@
     <title>프로젝트 소개 | LSR2222</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="games/tetris.js" defer></script>
+    <script src="games/space-invaders.js" defer></script>
+    <script src="games/breakout.js" defer></script>
+    <script src="games/snake.js" defer></script>
   </head>
   <body>
     <header>
@@ -19,28 +23,184 @@
       </nav>
     </header>
 
-    <main class="page">
-      <p class="label">02 / SELECTED WORKS</p>
-      <h1>프로젝트가<br><em>말하는 방식.</em></h1>
-      <section class="projects">
-        <article>
-          <p>01 / WEB</p>
-          <h2>Project One</h2>
-          <span>브랜드의 첫인상을 설계한 웹 프로젝트</span>
-          <b>↗</b>
-        </article>
-        <article>
-          <p>02 / IDENTITY</p>
-          <h2>Project Two</h2>
-          <span>일관된 언어와 시각을 만든 아이덴티티</span>
-          <b>↗</b>
-        </article>
-        <article>
-          <p>03 / EXPERIENCE</p>
-          <h2>Project Three</h2>
-          <span>사용자 흐름을 새롭게 연결한 경험 디자인</span>
-          <b>↗</b>
-        </article>
+    <main class="page case-study">
+      <p class="label">02 / CASE STUDY · 2025</p>
+      <h1 class="case-title">보이지 않던 위험의 흐름을,<br><em>한 번에 읽을 수 있게.</em></h1>
+
+      <div class="case-meta" aria-label="프로젝트 개요">
+        <div><span>PROJECT</span><strong>지능형 CCTV 관제 플랫폼</strong></div>
+        <div><span>ROLE</span><strong>Product Strategy · UX/UI Design</strong></div>
+        <div><span>PERIOD</span><strong>12 Weeks · Concept to Prototype</strong></div>
+        <div><span>TEAM</span><strong>PM · Designer · Front-end · AI Engineer</strong></div>
+      </div>
+
+      <section class="case-tech" aria-label="프로젝트 기술 스택">
+        <p class="label">TECHNOLOGY STACK</p>
+        <div class="tech-grid">
+          <article>
+            <span>AI INFERENCE</span>
+            <strong>NVIDIA Triton<br>Inference Server</strong>
+            <p>TensorRT · PyTorch · Video AI Analytics</p>
+          </article>
+          <article>
+            <span>VIDEO PIPELINE</span>
+            <strong>RTSP · ONVIF<br>FFmpeg · OpenCV</strong>
+            <p>Live Stream · Transcoding · Event Clip</p>
+          </article>
+          <article>
+            <span>DATA &amp; API</span>
+            <strong>FastAPI · PostgreSQL<br>Redis · WebSocket</strong>
+            <p>Event Data · Alert Queue · Real-time Update</p>
+          </article>
+          <article>
+            <span>PLATFORM OPS</span>
+            <strong>React · Docker<br>Kubernetes · Grafana</strong>
+            <p>Dashboard · Container · Monitoring</p>
+          </article>
+        </div>
+      </section>      <p class="case-lede">관제실의 하루는 조용하지만, 화면 속에서는 수십 개의 사건이 동시에 일어납니다. 이 프로젝트는 단순히 영상을 더 많이 보여 주는 일이 아니라, 운영자가 더 빠르고 확신 있게 판단하도록 돕는 지능형 CCTV 플랫폼을 설계한 기록입니다.</p>
+
+      <section class="case-chapter">
+        <div class="chapter-index"><span>CHAPTER 01</span><time>06:40 AM</time></div>
+        <div class="chapter-content">
+          <h2>48개의 화면을 보지만,<br>정작 중요한 장면은 놓치고 있었습니다.</h2>
+          <figure class="chapter-image">
+            <img src="assets/cctv-chapter-01-field-research.png" alt="새벽 관제실에서 다수의 CCTV 화면을 확인하는 운영자">
+            <figcaption><span>01 / FIELD RESEARCH</span><span>Control room observation · 06:40 AM</span></figcaption>
+          </figure>
+          <div class="story-grid">
+            <p>현장 인터뷰에서 가장 먼저 확인한 것은 관제 인력의 시선이었습니다. 운영자는 여러 대의 모니터와 알림 창을 오가며 상황을 파악했지만, 화면의 수가 많을수록 판단의 속도는 느려졌습니다.</p>
+            <p>문제는 카메라가 부족한 것이 아니었습니다. 이상 징후가 발생했을 때 <b>어디에서, 왜, 지금 무엇을 해야 하는지</b>를 한 번에 이해할 수 없다는 점이었습니다.</p>
+          </div>
+          <blockquote>“알림은 계속 오는데, 지금 당장 봐야 할 장면이 무엇인지 판단하는 데 시간이 걸려요.”<cite>— 관제 운영자 인터뷰</cite></blockquote>
+        </div>
+      </section>
+
+      <section class="case-chapter">
+        <div class="chapter-index"><span>CHAPTER 02</span><time>10:15 AM</time></div>
+        <div class="chapter-content">
+          <h2>알림을 쌓지 않고,<br>상황의 우선순위를 만들었습니다.</h2>
+          <figure class="chapter-image">
+            <img src="assets/cctv-chapter-02-priority.png" alt="이벤트 우선순위를 검토하는 지능형 CCTV 관제 화면">
+            <figcaption><span>02 / EVENT PRIORITY</span><span>Decision flow · 10:15 AM</span></figcaption>
+          </figure>
+          <div class="story-grid">
+            <p>기존 시스템의 이벤트는 같은 무게로 나열되었습니다. 그래서 AI 감지 결과, 위치, 시간, 위험도, 담당자 상태를 묶어 하나의 ‘상황 카드’로 재구성했습니다.</p>
+            <p>사용자는 카메라 번호를 기억하지 않아도 됩니다. 플랫폼은 위험도와 영향 범위를 먼저 보여 주고, 필요한 영상·과거 이력·대응 절차를 그 다음 단계에 자연스럽게 연결합니다.</p>
+          </div>
+          <ul class="decision-list">
+            <li><span>01</span><strong>우선순위 큐</strong><p>위험도, 지속 시간, 구역 중요도를 반영해 가장 먼저 확인할 사건을 제시</p></li>
+            <li><span>02</span><strong>맥락형 영상</strong><p>단일 화면 대신 전후 영상과 인접 카메라를 함께 연결해 상황을 빠르게 파악</p></li>
+            <li><span>03</span><strong>대응 이력</strong><p>확인·전파·조치 과정을 자동으로 남겨 다음 교대자도 같은 맥락을 이어받도록 설계</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="case-chapter">
+        <div class="chapter-index"><span>CHAPTER 03</span><time>02:30 PM</time></div>
+        <div class="chapter-content">
+          <h2>관제 화면은 정보판이 아니라,<br>결정을 위한 작업대가 되어야 했습니다.</h2>
+          <figure class="chapter-image">
+            <img src="assets/cctv-chapter-03-design.png" alt="CCTV 관제 플랫폼 화면을 설계하는 제품 디자인 워크스페이스">
+            <figcaption><span>03 / PRODUCT DESIGN</span><span>Prototype system · 02:30 PM</span></figcaption>
+          </figure>
+          <div class="story-grid">
+            <p>프로토타입에서는 한 화면에 모든 기능을 넣지 않았습니다. 첫 화면은 ‘지금 조치할 일’에 집중하고, 상세 화면에서만 영상·지도·알림 이력·대응 가이드를 단계적으로 열도록 했습니다.</p>
+            <p>색상은 긴급 상태를 위한 신호로만 사용했습니다. 평상시 화면의 대비를 낮추고, 정말 중요한 변화에만 색이 개입하도록 하여 장시간 관제 환경의 피로도를 줄이는 방향을 택했습니다.</p>
+          </div>
+          <div class="case-callout"><span>DESIGN PRINCIPLE</span><p>더 많은 정보를 보여 주는 것이 아니라, <b>다음 행동을 더 분명하게 만드는 것.</b></p></div>
+        </div>
+      </section>
+
+      <section class="case-chapter">
+        <div class="chapter-index"><span>CHAPTER 04</span><time>05:50 PM</time></div>
+        <div class="chapter-content">
+          <h2>검증은 화면이 아니라,<br>운영자의 행동으로 확인했습니다.</h2>
+          <figure class="chapter-image">
+            <img src="assets/cctv-chapter-04-validation.png" alt="운영자가 CCTV 관제 플랫폼 프로토타입을 검증하는 현장">
+            <figcaption><span>04 / FIELD VALIDATION</span><span>Usability session · 05:50 PM</span></figcaption>
+          </figure>
+          <div class="story-grid">
+            <p>대표 시나리오를 바탕으로 ‘이상 감지 → 영상 확인 → 담당자 전파 → 조치 기록’ 흐름을 검증했습니다. 관제 경험이 있는 사용자에게는 익숙한 용어를, 신규 사용자에게는 명확한 안내를 제공하는 균형을 조정했습니다.</p>
+            <p>최종 결과물은 단순한 UI 시안이 아니라 우선순위 규칙, 화면 구조, 컴포넌트 원칙, 시나리오별 대응 흐름을 담은 실행 가능한 프로토타입이었습니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-outcome">
+        <p class="label">OUTCOME / VALIDATION TARGET</p>
+        <h2>관제의 목적은<br><em>더 많이 보는 것</em>이 아니라<br>더 빠르게 판단하는 것입니다.</h2>
+        <div class="outcome-grid">
+          <article><strong>01</strong><p>중요 이벤트를 우선순위 큐로 정리해<br>첫 확인 단계의 인지 부담을 줄이는 구조</p></article>
+          <article><strong>02</strong><p>영상·위치·이력을 연결해<br>사건 맥락을 한 흐름으로 이해하는 경험</p></article>
+          <article><strong>03</strong><p>교대와 협업 상황에서도 이어지는<br>일관된 대응 기록과 업무 기준</p></article>
+        </div>
+      </section>
+
+      <p class="case-note">본 케이스 스터디는 지능형 CCTV 플랫폼을 타깃으로 구성한 포트폴리오용 시나리오입니다.</p>
+
+      <section class="tetris-section" data-tetris aria-label="테트리스 게임">
+        <div class="tetris-heading">
+          <p class="label">BONUS / SYSTEM BREAK</p>
+          <h2>관제의 긴장감은 잠시 내려놓고,<br><em>TETRIS</em>를 플레이하세요.</h2>
+        </div>
+        <div class="tetris-game">
+          <div class="tetris-board-wrap">
+            <canvas class="tetris-board" width="240" height="480" aria-label="테트리스 게임 화면"></canvas>
+            <p class="tetris-message" aria-live="polite">START를 눌러 시작하세요.</p>
+          </div>
+          <aside class="tetris-sidebar">
+            <div class="tetris-stats">
+              <div><span>SCORE</span><strong data-tetris-score>000000</strong></div>
+              <div><span>LINES</span><strong data-tetris-lines>00</strong></div>
+              <div><span>LEVEL</span><strong data-tetris-level>01</strong></div>
+            </div>
+            <div class="tetris-next"><span>NEXT</span><canvas class="tetris-preview" width="120" height="120" aria-label="다음 블록"></canvas></div>
+            <div class="tetris-actions">
+              <button type="button" data-tetris-start>START</button>
+              <button type="button" data-tetris-reset>RESET</button>
+            </div>
+            <p class="tetris-help">← → 이동 · ↑ 회전 · ↓ 빠르게<br>SPACE 즉시 내리기 · P 일시정지</p>
+          </aside>
+        </div>
+        <div class="tetris-controls" aria-label="테트리스 조작 버튼">
+          <button type="button" data-tetris-action="left" aria-label="왼쪽으로 이동">←</button>
+          <button type="button" data-tetris-action="rotate" aria-label="회전">↻</button>
+          <button type="button" data-tetris-action="right" aria-label="오른쪽으로 이동">→</button>
+          <button type="button" data-tetris-action="down" aria-label="아래로 이동">↓</button>
+          <button type="button" data-tetris-action="drop" aria-label="즉시 내리기">↡</button>
+        </div>
+      </section>
+
+      <section class="invaders-section" data-invaders aria-label="스페이스 인베이더 게임">
+        <div class="invaders-heading"><p class="label">BONUS / OUTER SPACE</p><h2>한 판 더,<br><em>SPACE INVADERS</em></h2></div>
+        <div class="invaders-game">
+          <div class="invaders-board-wrap"><canvas class="invaders-board" width="360" height="420" aria-label="스페이스 인베이더 게임 화면"></canvas><p class="invaders-message" aria-live="polite">START를 눌러 시작하세요.</p></div>
+          <aside class="invaders-sidebar">
+            <div class="invaders-stats"><div><span>SCORE</span><strong data-invaders-score>000000</strong></div><div><span>LIVES</span><strong data-invaders-lives>03</strong></div><div><span>WAVE</span><strong data-invaders-wave>01</strong></div></div>
+            <div class="invaders-actions"><button type="button" data-invaders-start>START</button><button type="button" data-invaders-reset>RESET</button></div>
+            <p class="invaders-help">← → 이동 · SPACE 발사<br>P 일시정지</p>
+          </aside>
+        </div>
+        <div class="invaders-controls" aria-label="스페이스 인베이더 조작 버튼"><button type="button" data-invaders-action="left" aria-label="왼쪽으로 이동">←</button><button type="button" data-invaders-action="shoot" aria-label="발사">●</button><button type="button" data-invaders-action="right" aria-label="오른쪽으로 이동">→</button></div>
+      </section>
+
+      <section class="breakout-section" data-breakout aria-label="벽돌깨기 게임">
+        <div class="breakout-heading"><p class="label">BONUS / PRECISION</p><h2>마지막 한 판,<br><em>BREAKOUT</em></h2></div>
+        <div class="breakout-game">
+          <div class="breakout-board-wrap"><canvas class="breakout-board" width="360" height="400" aria-label="벽돌깨기 게임 화면"></canvas><p class="breakout-message" aria-live="polite">START를 눌러 시작하세요.</p></div>
+          <aside class="breakout-sidebar"><div class="breakout-stats"><div><span>SCORE</span><strong data-breakout-score>000000</strong></div><div><span>LIVES</span><strong data-breakout-lives>03</strong></div><div><span>LEVEL</span><strong data-breakout-level>01</strong></div></div><div class="breakout-actions"><button type="button" data-breakout-start>START</button><button type="button" data-breakout-reset>RESET</button></div><p class="breakout-help">← → 이동 · SPACE 발사<br>P 일시정지</p></aside>
+        </div>
+        <div class="breakout-controls" aria-label="벽돌깨기 조작 버튼"><button type="button" data-breakout-action="left" aria-label="왼쪽으로 이동">←</button><button type="button" data-breakout-action="launch" aria-label="공 발사">●</button><button type="button" data-breakout-action="right" aria-label="오른쪽으로 이동">→</button></div>
+      </section>
+
+      <section class="snake-section" data-snake aria-label="스네이크 게임">
+        <div class="snake-heading"><p class="label">BONUS / CLASSIC ARCADE</p><h2>조금 더 천천히,<br><em>SNAKE</em></h2></div>
+        <div class="snake-game">
+          <div class="snake-board-wrap"><canvas class="snake-board" width="360" height="360" aria-label="스네이크 게임 화면"></canvas><p class="snake-message" aria-live="polite">START를 눌러 시작하세요.</p></div>
+          <aside class="snake-sidebar"><div class="snake-stats"><div><span>SCORE</span><strong data-snake-score>000000</strong></div><div><span>LENGTH</span><strong data-snake-length>03</strong></div><div><span>SPEED</span><strong data-snake-speed>01</strong></div></div><div class="snake-actions"><button type="button" data-snake-start>START</button><button type="button" data-snake-reset>RESET</button></div><p class="snake-help">← → ↑ ↓ 이동<br>P 일시정지</p></aside>
+        </div>
+        <div class="snake-controls" aria-label="스네이크 조작 버튼"><button type="button" data-snake-action="up" aria-label="위로 이동">↑</button><button type="button" data-snake-action="left" aria-label="왼쪽으로 이동">←</button><button type="button" data-snake-action="down" aria-label="아래로 이동">↓</button><button type="button" data-snake-action="right" aria-label="오른쪽으로 이동">→</button></div>
       </section>
     </main>
 
