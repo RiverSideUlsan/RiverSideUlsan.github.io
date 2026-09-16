@@ -24,69 +24,131 @@
       </nav>
     </header>
 
-    <main class="guestbook-container">
-      <section class="guestbook-header">
-        <p class="label">04 / GUESTBOOK</p>
-        <h1>방문해 주셔서<br><em>감사합니다.</em></h1>
-        <p class="copy">
-          따뜻한 인사나 피드백, 나누고 싶은 이야기를 자유롭게 남겨주세요.
+    <main class="guestbook-page">
+      <!-- 1. Hero / Intro Header -->
+      <section class="gb-hero">
+        <div class="gb-hero-top">
+          <p class="label">04 / GUESTBOOK</p>
+          <div class="live-badge">
+            <span class="pulse-dot"></span>
+            <span class="live-text">LIVE CONNECTED</span>
+          </div>
+        </div>
+        <h1 class="gb-title">머물렀던 순간을<br><em>기록으로</em> 남깁니다.</h1>
+        <p class="copy gb-subtitle">
+          이 공간을 찾아주신 모든 분들의 따뜻한 인사와 피드백, 나누고 싶은 이야기를 자유롭게 전해주세요.
         </p>
+
+        <!-- Stats Bar -->
+        <div class="gb-stats-bar">
+          <div class="stat-item">
+            <span class="stat-label">TOTAL STORIES</span>
+            <span id="stat-total-count" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">STORAGE</span>
+            <span class="stat-value">Supabase DB</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">SECURITY</span>
+            <span class="stat-value">RLS Protected</span>
+          </div>
+        </div>
       </section>
 
-      <!-- 방명록 입력 폼 -->
-      <section class="guestbook-form-section">
-        <form id="guestbook-form" class="guestbook-form">
-          <div class="form-group">
-            <label for="nickname">닉네임</label>
-            <input
-              type="text"
-              id="nickname"
-              name="nickname"
-              maxlength="50"
-              placeholder="당신의 닉네임이나 성함을 적어주세요"
-              required
-              autocomplete="off"
-            >
-          </div>
-
-          <div class="form-group">
-            <div class="label-row">
-              <label for="message">메시지</label>
-              <span id="char-counter" class="char-counter">0 / 500</span>
+      <!-- 2. Main Content 2-Column Grid -->
+      <div class="gb-layout">
+        <!-- Left: Sticky Form Column -->
+        <aside class="gb-sidebar">
+          <div class="gb-form-card">
+            <div class="form-card-header">
+              <span class="form-tag">LEAVE A NOTE</span>
+              <h3>새로운 발자국 남기기</h3>
+              <p>닉네임과 남기고 싶은 메시지를 입력해 주세요.</p>
             </div>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              maxlength="500"
-              placeholder="남기실 메시지를 입력해 주세요 (최대 500자)"
-              required
-            ></textarea>
+
+            <form id="guestbook-form" class="gb-form">
+              <!-- Nickname input with avatar preview -->
+              <div class="form-group">
+                <div class="label-row">
+                  <label for="nickname">닉네임</label>
+                  <span class="field-hint">최대 50자</span>
+                </div>
+                <div class="input-with-avatar">
+                  <div id="avatar-preview" class="avatar-preview">✍️</div>
+                  <input
+                    type="text"
+                    id="nickname"
+                    name="nickname"
+                    maxlength="50"
+                    placeholder="이름 또는 닉네임"
+                    required
+                    autocomplete="off"
+                  >
+                </div>
+              </div>
+
+              <!-- Mood / Category Tags -->
+              <div class="form-group">
+                <label>이야기 분위기</label>
+                <div class="mood-selector" id="mood-selector">
+                  <button type="button" class="mood-btn active" data-mood="🌿 안부">🌿 안부</button>
+                  <button type="button" class="mood-btn" data-mood="☕ 응원">☕ 응원</button>
+                  <button type="button" class="mood-btn" data-mood="💡 영감">💡 영감</button>
+                  <button type="button" class="mood-btn" data-mood="🚀 협업">🚀 협업</button>
+                  <button type="button" class="mood-btn" data-mood="✨ 축하">✨ 축하</button>
+                </div>
+              </div>
+
+              <!-- Message input -->
+              <div class="form-group">
+                <div class="label-row">
+                  <label for="message">메시지</label>
+                  <span id="char-counter" class="char-counter">0 / 500</span>
+                </div>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  maxlength="500"
+                  placeholder="따뜻한 한 줄, 질문, 피드백 등 무엇이든 환영합니다."
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Form footer with status and submit -->
+              <div class="gb-form-footer">
+                <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
+                <button type="submit" id="submit-btn" class="button gb-submit-btn">
+                  <span>발자국 남기기</span>
+                  <span class="btn-arrow">↗</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </aside>
+
+        <!-- Right: Feed Column -->
+        <section class="gb-feed-column">
+          <div class="feed-header">
+            <div class="feed-title-wrap">
+              <h2>남겨진 이야기들</h2>
+              <span id="feed-count-badge" class="count-badge">0</span>
+            </div>
+            <button id="refresh-btn" class="refresh-pill-btn" aria-label="방명록 새로고침">
+              <span class="refresh-icon">↻</span>
+              <span>새로고침</span>
+            </button>
           </div>
 
-          <div class="form-footer">
-            <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
-            <button type="submit" id="submit-btn" class="button button-submit">남기기 <span>↗</span></button>
+          <!-- List Container -->
+          <div id="guestbook-list" class="gb-card-list" aria-live="polite">
+            <!-- Rendered by guestbook.js -->
           </div>
-        </form>
-      </section>
-
-      <!-- 방명록 목록 -->
-      <section class="guestbook-list-section">
-        <div class="list-title-row">
-          <h2>남겨진 발자국들</h2>
-          <button id="refresh-btn" class="refresh-button" aria-label="방명록 새로고침" title="새로고침">
-            새로고침 ↻
-          </button>
-        </div>
-
-        <div id="guestbook-list" class="guestbook-list" aria-live="polite">
-          <!-- JS에서 렌더링됨 -->
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
 
     <footer>© 2026 LSR2222. All rights reserved.</footer>
   </body>
 </html>
-
