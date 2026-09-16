@@ -1,0 +1,14 @@
+# Environment & Secrets
+.env
+.env.*
+*.local
+*secret*
+*service-role*
+config.local.js
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
